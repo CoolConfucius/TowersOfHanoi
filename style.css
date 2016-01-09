@@ -86,10 +86,28 @@ header{
 .disk{
   background-color: #D16215;
   height: 50px; 
-  width: 60%;
   border: solid;
   display: block;
   bottom: 0; 
   position: relative;
   margin: 0 auto; 
+}
+
+#disk0{
+  width: 30%;
+}
+#disk1{
+  width: 40%;
+}
+#disk2{
+  width: 50%;
+}
+#disk3{
+  width: 60%;
+}
+#disk4{
+  width: 70%;
+}
+#disk5{
+  width: 80%;
 }

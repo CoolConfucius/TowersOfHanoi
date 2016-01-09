@@ -96,28 +96,28 @@ function resetClicked(event){
 
 function createDisks(difficulty){
   var $disk = $('<div>').addClass('disk');
-  var $disk0 = $disk.clone().text('0');
-  var $disk1 = $disk.clone().text('1');
-  var $disk2 = $disk.clone().text('2');  
+  var $disk0 = $disk.clone().attr('id','disk0').text('0');
+  var $disk1 = $disk.clone().attr('id','disk1').text('1');
+  var $disk2 = $disk.clone().attr('id','disk2').text('2');  
   if (difficulty === 'casual') {
     $tower0.append($disk0, $disk1, $disk2); 
     return; 
   } else {
-    var $disk3 = $disk.clone().text('3');
+    var $disk3 = $disk.clone().attr('id','disk3').text('3');
   }
 
   if (difficulty === 'normal') {
     $("#tower0").append($disk0, $disk1, $disk2, $disk3); 
     return; 
   } else {
-    var $disk4 = $disk.clone().text('4');
+    var $disk4 = $disk.clone().attr('id','disk4').text('4');
   }
 
   if (difficulty === 'hard') {
     $("#tower0").append($disk0, $disk1, $disk2, $disk3, $disk4); 
     return; 
   } else {
-    var $disk5 = $disk.clone().text('5');
+    var $disk5 = $disk.clone().attr('id','disk5').text('5');
     $("#tower0").append($disk0, $disk1, $disk2, $disk3, $disk4, $disk5); 
   }
 
