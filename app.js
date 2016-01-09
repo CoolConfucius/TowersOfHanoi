@@ -98,7 +98,7 @@ function createDisks(difficulty){
   var $disk = $('<div>').addClass('disk');
   var $disk0 = $disk.clone().text('0');
   var $disk1 = $disk.clone().text('1');
-  var $disk2 = $disk.clone().text('2');
+  var $disk2 = $disk.clone().text('2');  
   if (difficulty === 'casual') {
     $tower0.append($disk0, $disk1, $disk2); 
     return; 
