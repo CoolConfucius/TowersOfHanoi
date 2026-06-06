@@ -1,113 +1,202 @@
-body{
-  font-family: Helvetica; 
-  font-size: 24px; 
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-header{
-  background-color: black; 
-  color: white;
+body {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 16px;
+  background: #12090a;
+  color: #d4a853;
+  margin: 0;
+  padding: 0 16px 32px;
+}
+
+header {
+  background: linear-gradient(135deg, #1e0e00 0%, #3a2200 100%);
+  color: #d4a853;
   text-align: center;
-  height: 35px; 
-  margin-top: 10px; 
+  padding: 18px 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  border-bottom: 2px solid #5a3a00;
+  text-shadow: 0 0 22px rgba(212, 168, 83, 0.45);
+  margin-bottom: 14px;
 }
 
+/* --- State display --- */
 #state {
-  border: solid;
-  height: 30px;
-  width: auto; 
+  background: #1e0e00;
+  border: 1px solid #3a2200;
+  height: auto;
+  padding: 9px 16px;
+  text-align: center;
+  color: #d4a853;
+  font-size: 15px;
+  margin: 0 auto 10px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* --- Difficulty selector --- */
+.wrapper {
+  margin: 8px auto;
+  text-align: center;
 }
 
 .difficulty {
   display: inline-block;
-  border: solid;
-  margin: 0 auto;
-  width: 20%;  
+  border: 1px solid #3a2200;
+  background: #1e0e00;
+  color: #c49040;
+  margin: 4px 6px;
+  width: 110px;
+  padding: 8px 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
 }
 
-.wrapper{
-  border: solid;
-  background-color: #D16215;
-  margin: 0 auto; 
-  text-align: center; 
+.difficulty:hover {
+  background: #3a2200;
+  border-color: #d4a853;
+  color: #f5d080;
 }
 
-#hold, #moves{
-  border: solid;
-  height: 60px; 
-  width: 60px;
+/* --- Hold & move counter --- */
+#hold,
+#moves {
+  border: 1px solid #3a2200;
+  background: #1e0e00;
+  height: 46px;
+  width: 46px;
   vertical-align: middle;
   text-align: center;
   display: inline-block;
+  line-height: 46px;
+  border-radius: 4px;
+  color: #d4a853;
+  font-weight: 700;
+  font-size: 18px;
 }
 
-
-
+/* --- Tower container --- */
 #container {
-  border: solid;
-  height: 600px;
+  border: 2px solid #3a2200;
+  height: 500px;
   min-width: 300px;
-  width: auto; 
-  margin: 0 auto; 
-  background-color: #D6D63A;
-  text-align: center; 
+  max-width: 720px;
+  width: 90%;
+  margin: 14px auto;
+  background: linear-gradient(180deg, #0e0600 0%, #1e0e00 60%, #2a1500 100%);
+  text-align: center;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
 }
 
 .row {
-  width: auto; 
-  margin: 0 auto; 
+  width: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
-.label{
-  width: 30%; 
+.label {
+  width: 30%;
   display: inline-block;
+  color: #6a4a18;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  padding: 6px 0;
 }
 
-.tower{
-  vertical-align: bottom; 
-  margin-left: 10px; 
-  margin-top: 50px; 
+/* --- Tower columns --- */
+.tower {
+  vertical-align: bottom;
+  margin-left: 10px;
+  margin-top: 36px;
   display: inline-block;
-  border: solid;  
-  height: 500px; 
-  width: 160px; 
+  height: 430px;
   width: 30%;
   position: relative;
   text-align: center;
+  cursor: pointer;
 }
 
-#reset {
-  border: solid;
-  height: 30px;
-  color: yellow;
-  border-color: black; 
+/* Tower pole */
+.tower::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 100%;
+  background: linear-gradient(90deg, #2a1500, #7a5020, #5a3500, #7a5020, #2a1500);
+  border-radius: 5px 5px 2px 2px;
+  z-index: 0;
 }
 
-.disk{
-  background-color: #D16215;
-  height: 50px; 
-  border: solid;
+/* Tower base */
+.tower::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 5%;
+  width: 90%;
+  height: 10px;
+  background: linear-gradient(90deg, #1e0e00, #5a3500, #1e0e00);
+  border-radius: 5px;
+}
+
+/* --- Disks --- */
+.disk {
+  height: 42px;
   display: block;
-  bottom: 0; 
   position: relative;
-  margin: 0 auto; 
+  margin: 2px auto;
+  border-radius: 6px;
+  z-index: 1;
+  color: transparent;
+  cursor: grab;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: opacity 0.1s;
 }
 
-#disk0{
-  width: 30%;
+.disk:hover {
+  opacity: 0.85;
 }
-#disk1{
-  width: 40%;
+
+#disk0 { width: 22%; background: linear-gradient(180deg, #ff6b6b 0%, #b31212 100%); }
+#disk1 { width: 34%; background: linear-gradient(180deg, #ffaa44 0%, #c06000 100%); }
+#disk2 { width: 46%; background: linear-gradient(180deg, #ffe033 0%, #b89000 100%); }
+#disk3 { width: 58%; background: linear-gradient(180deg, #3ae88a 0%, #0a7a40 100%); }
+#disk4 { width: 70%; background: linear-gradient(180deg, #4db8ff 0%, #0060b0 100%); }
+#disk5 { width: 82%; background: linear-gradient(180deg, #c080ff 0%, #6a00cc 100%); }
+
+/* --- Reset button --- */
+#reset {
+  border: 1px solid #d4a853;
+  background: #1e0e00;
+  color: #d4a853;
+  padding: 9px 28px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  display: inline-block;
+  margin: 6px auto;
+  transition: background 0.18s, color 0.18s;
 }
-#disk2{
-  width: 50%;
-}
-#disk3{
-  width: 60%;
-}
-#disk4{
-  width: 70%;
-}
-#disk5{
-  width: 80%;
+
+#reset:hover {
+  background: #d4a853;
+  color: #1a0800;
 }
